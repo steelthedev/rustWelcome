@@ -1,39 +1,40 @@
-use std::net::IpAddr;
-
-
 fn main() {
-    enum IpAddr {
-        V4(u8,u8,u8,u8),
-        V6(String),
+    // Approach 1
+
+    let result = divide(10.0, 2.0);
+    match result {
+        Some(x) => println!("Result: {}", x),
+        None => println!("Cannot divide by Zero!")
     }
 
+    // Approach 2
 
-    // let _home = IpAddr::V4(String::from("127.0.0.1"));
-    // let _loopback = IpAddr::V6(String::from("::1"));
-
-
-    // ENhanced enums
-
-
-    let _home = IpAddr::V4(127,0,0,1);
-    let _loopback = IpAddr::V6(String::from("::1"));
-
-
-    // struct  IpAddr{
-    //     kind: IpAddrKind,
-    //     address: String
-    // }
-
-    // let _four = IpAddrKind::V4;
-    // let _six = IpAddrKind::V6;
-
-    // let _home: IpAddr = IpAddr {
-    //      kind: _four,
-    //      address: String::from("127.0.0.1") 
-    //     };
-
-    // let _loopback: IpAddr = IpAddr { kind: _six, address: String::from("::1") };
+    let result2 = sub(1.0, 2.0);
+    match result2 {
+        Ok(result) => println!("Result: {}", result),
+        Err(err) => println!("{err}")
+    }
    
 
-   
 }
+
+
+fn divide(num: f64, den: f64) -> Option<f64>{
+    if den == 0.0{
+        None
+    }else {
+        Some(num/den)
+    }
+    
+}
+
+
+fn sub(num1: f64, num2: f64) -> Result<f64, String>{
+    if num1 < num2{
+        Err("Number 1 cannot be smaller".to_string())
+    }else {
+        Ok(num1-num2)
+    }
+    
+}
+
