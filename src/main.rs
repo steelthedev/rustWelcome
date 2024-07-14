@@ -1,9 +1,12 @@
-// Variables and Mutability
-
 fn main() {
-    let mut _a: u16 = 5;
-    println!("{}", _a);
+    let x = 5;
 
-    _a = 67;
-    println!("{}", _a)
+    let x = x + 1;
+    
+    {
+        let x = x*2;
+        println!("{}", x)
+    }
+
+    println!("{}", x)
 }
