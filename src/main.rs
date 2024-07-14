@@ -1,26 +1,47 @@
+// Compound data types
+// Arrays, tuples, slices, and strings (slice strings)
+
 
 
 
 fn main() {
+    let numbers: [i32; 5] = [1,2,3,4,5];
+    println!("Number array:{:?}", numbers);
+    
+    let fruits: [&str; 5] = ["Apple","bannana","orange","pear","cashew"];
 
-    //Integer
+    println!("Fruits Array:{:?}", fruits);
+    println!("Fruit Array: {}", fruits[0]);
 
-    let x: i32 = -42;
-    let y: u64 = 65;
-    println!("Signed Integer:{}", x);
-    println!("Unsigned Integer: {}", y);
 
-    //Floats
-    let pi: f32 = 3.14;
-    println!("Value of pi: {}", pi);
+    // Tuples
+    let human: (&str, i32, bool) = ("Alice",30, true);
+    println!("{:?}", human);
 
-    //Boolean
+    let my_mix_tuple: (&str, i32, bool, [i32; 5]) = ("Kratos",23, true,[1,2,3,4,5]);
+    println!("Mix Tuple: {:?}", my_mix_tuple);
 
-    let is_snwoing: bool = true;
-    println!("Is it snowing?: {}", is_snwoing);
+    // Slices:
+    let number_slices: &[i32; 5] = &[1,2,3,4,5];
+    println!("My number slices: {:?}", number_slices);
 
-    // Character type
 
-    let letter: char = 'a';
-    println!("First letter of the alphabet is: {}",letter);
+    let animal_slices: &[&str] = &["Lion", "Elephant", "Crocodile"];
+    println!("My animal slices: {:?}", animal_slices);
+
+    let book_slices: &[&String] = &[&"IT".to_string()];
+    println!("My book slices: {:?}", book_slices);
+
+    // String vs string slices(&str)
+    // Strings [growable, mutable, owned string type]
+    let mut  stone_cold: String = String::from("Hell, ");
+    stone_cold.push_str("Yeah!");
+    println!("Stone Cold Says: {}", stone_cold);
+
+    // String Slice (&str)
+    let string: String = String::from("Hello, World");
+    let slice: &str = &string;
+    println!("Slice Value: {}", slice)
+    
 }
+
