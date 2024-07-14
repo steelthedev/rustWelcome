@@ -1,47 +1,61 @@
-// Compound data types
-// Arrays, tuples, slices, and strings (slice strings)
-
-
-
 
 fn main() {
-    let numbers: [i32; 5] = [1,2,3,4,5];
-    println!("Number array:{:?}", numbers);
-    
-    let fruits: [&str; 5] = ["Apple","bannana","orange","pear","cashew"];
+  hello_world();
+  tell_height(45);
+  human_id("Iyanuoluwa", 26, 67.0);
 
-    println!("Fruits Array:{:?}", fruits);
-    println!("Fruit Array: {}", fruits[0]);
+  let x = {
+    let price: i32 = 50;
+    let qty: i32 = 2;
+    price * qty
 
+  };
+  println!("Result is: {}", x);
 
-    // Tuples
-    let human: (&str, i32, bool) = ("Alice",30, true);
-    println!("{:?}", human);
+  let y: i32 = add(5, 10);
+  println!("Value of y is: {}", y);
 
-    let my_mix_tuple: (&str, i32, bool, [i32; 5]) = ("Kratos",23, true,[1,2,3,4,5]);
-    println!("Mix Tuple: {:?}", my_mix_tuple);
-
-    // Slices:
-    let number_slices: &[i32; 5] = &[1,2,3,4,5];
-    println!("My number slices: {:?}", number_slices);
-
-
-    let animal_slices: &[&str] = &["Lion", "Elephant", "Crocodile"];
-    println!("My animal slices: {:?}", animal_slices);
-
-    let book_slices: &[&String] = &[&"IT".to_string()];
-    println!("My book slices: {:?}", book_slices);
-
-    // String vs string slices(&str)
-    // Strings [growable, mutable, owned string type]
-    let mut  stone_cold: String = String::from("Hell, ");
-    stone_cold.push_str("Yeah!");
-    println!("Stone Cold Says: {}", stone_cold);
-
-    // String Slice (&str)
-    let string: String = String::from("Hello, World");
-    let slice: &str = &string;
-    println!("Slice Value: {}", slice)
+      // Calling BMI func
+      let weight: f64 = 50.0;
+      let height: f64 = 40.0;
+      let bmi: f64 = calculate_bmi(weight, height);
+      println!("BMI value is {:.2}", bmi);
     
 }
+
+fn calculate_bmi(weight_kg:f64, height_m:f64) -> f64{
+    weight_kg/(height_m * height_m)
+}
+
+
+fn hello_world(){
+    println!("Hello, Rust")
+}
+
+// Insert parameters
+
+fn tell_height(height: i32){
+    println!("My height is {} cm", height)
+}
+
+fn human_id(name: &str, age: u32, height: f32){
+    println!("My name is {}, I am {} years old, and my height is {} cm",name, age, height);
+}
+
+fn add(a:i32, b:i32) -> i32{
+    a+b
+}
+
+
+
+// Expressions and statements
+// Expression: Anything that returns a value(
+// 5
+// true & false
+// if conditions 
+// add(4,5) 
+//)
+
+// Statement: Anything that does not return a value
+
 
