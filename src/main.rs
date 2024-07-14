@@ -1,29 +1,60 @@
-
 fn main() {
-//  let age: u16 = 18;
+    
+    // //Loop keyword (Unconditional loop; runs till you tell it to stop)
+    // let mut _x = 0;
+    // let result = loop {
+    //      _x += 1;
 
-//  if age >= 18{
-//     println!("You are old enough to code");
-//  }else {
-//      println!("You can't code");
-//  }
- 
-// Multiple conditions with else if
- let number: i32 = 100;
+    //     if _x > 5{
+    //         break _x * 2;
+    //     }
+    // };
 
- if number % 4 == 0{
-    println!("Number is divisible by 4");
- }else if number % 3 == 0 {
-    println!("Number is divisible by 3");
- }else if number % 2 == 0 {
-    println!("Number is divisible by 2");
- }else {
-     println!("Number not divisible by 4, 3, or 2");
- }
+    // println!("{}", result);
 
- // If in a let statement
+    // Loop labels
 
- let condition = true;
- let number = if condition {5} else {6};
- println!("{}", number)
+    // let mut counter = 0;
+
+    // 'counting_up: loop {
+    //     println!("count = {counter}");
+    //     let mut remaining = 10;
+
+    //     loop {
+    //         println!("remaining = {remaining}");
+    //         if remaining == 9{
+    //             break;
+    //         }
+    //         if counter == 2{
+    //             break 'counting_up;
+    //         }
+
+    //         remaining -= 1
+    //     }
+    //     counter += 1
+    // }
+
+
+    // While loop
+
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{number}");
+        number -= 1;
+        break;
+    }
+
+    // For Loop
+
+    let a = [1,2,3,4,5,6];
+    let b = ["a","b","c","d"];
+
+    for element in a  {
+        println!("{element}");
+    }
+
+    for element in b  {
+        println!("{element}");
+    }
 }
