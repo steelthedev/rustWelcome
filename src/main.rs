@@ -1,60 +1,67 @@
+
+
 fn main() {
-    
-    // //Loop keyword (Unconditional loop; runs till you tell it to stop)
-    // let mut _x = 0;
-    // let result = loop {
-    //      _x += 1;
 
-    //     if _x > 5{
-    //         break _x * 2;
-    //     }
-    // };
+    let user: User = build_new_user(
+        String::from("akinwumikaliyanu@gmail.com"), 
+        String::from("steelthedev"), 
+        true,
+        5);
 
-    // println!("{}", result);
+    let mut book: Book = build_new_book(
+        String::from("Struct in rust"),
+        user,
+        56,
+        true);
 
-    // Loop labels
-
-    // let mut counter = 0;
-
-    // 'counting_up: loop {
-    //     println!("count = {counter}");
-    //     let mut remaining = 10;
-
-    //     loop {
-    //         println!("remaining = {remaining}");
-    //         if remaining == 9{
-    //             break;
-    //         }
-    //         if counter == 2{
-    //             break 'counting_up;
-    //         }
-
-    //         remaining -= 1
-    //     }
-    //     counter += 1
-    // }
+    book.print_book_name();
+    book.alter_book_name(String::from("Altered Carbon"));    
+    book.print_author_details();
+}
 
 
-    // While loop
+struct Book{
+    title: String,
+    author: User,
+    pages: u32,
+    available: bool,
+}
 
-    let mut number = 3;
+#[derive(Debug)]
+struct User{
+    active: bool,
+    username: String,
+    email: String, 
+    sign_in_count: u64,
+}
 
-    while number != 0 {
-        println!("{number}");
-        number -= 1;
-        break;
+
+fn build_new_user(email: String, username: String, active: bool, sign_in_count: u64) -> User{
+    User { active: active, username: username, email: email, sign_in_count: sign_in_count }
+}
+
+fn build_new_book(title: String, author: User, pages:u32, available: bool) -> Book{
+    Book { title: title, author: author, pages: pages, available: available }
+}
+
+
+impl Book {
+    fn print_book_name(&self){
+        println!("Book name is {}", self.title)
     }
 
-    // For Loop
-
-    let a = [1,2,3,4,5,6];
-    let b = ["a","b","c","d"];
-
-    for element in a  {
-        println!("{element}");
+    fn alter_book_name(&mut self, new_book_name:String){
+        self.title = new_book_name;
+        self.print_book_name()
     }
 
-    for element in b  {
-        println!("{element}");
+    fn print_author_details(&self){
+        println!("Author's details, {:?}", self.author.print_user_details());
+    }
+}
+
+impl User{
+    fn print_user_details(&self){
+        println!("{:?}", self);
     }
 }
