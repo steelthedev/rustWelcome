@@ -1,61 +1,34 @@
-
 fn main() {
-  hello_world();
-  tell_height(45);
-  human_id("Iyanuoluwa", 26, 67.0);
+    let mut account: BankAccount = BankAccount { 
+        owner: "Alice".to_string(), 
+        balance: 2000.0 
+    };    
 
-  let x = {
-    let price: i32 = 50;
-    let qty: i32 = 2;
-    price * qty
+    // Immutable borrow to check the balance 
+    account.check_balance();
 
-  };
-  println!("Result is: {}", x);
 
-  let y: i32 = add(5, 10);
-  println!("Value of y is: {}", y);
 
-      // Calling BMI func
-      let weight: f64 = 50.0;
-      let height: f64 = 40.0;
-      let bmi: f64 = calculate_bmi(weight, height);
-      println!("BMI value is {:.2}", bmi);
-    
-}
+    //Mutable borrow to withdraw money
+    account.withdraw(50.0);
 
-fn calculate_bmi(weight_kg:f64, height_m:f64) -> f64{
-    weight_kg/(height_m * height_m)
+    account.check_balance();
 }
 
 
-fn hello_world(){
-    println!("Hello, Rust")
+struct BankAccount{
+    owner: String,
+    balance: f64,
 }
 
-// Insert parameters
+impl BankAccount {
+    fn withdraw(&mut self, amount: f64){
+        println!("withdrawing {} from account by {}", amount, self.owner);
+        self.balance -= amount;
+    }
 
-fn tell_height(height: i32){
-    println!("My height is {} cm", height)
+    fn check_balance(&self){
+        println!("Account owned by {} has a balance of {}", self.owner, self.balance);
+    }
+
 }
-
-fn human_id(name: &str, age: u32, height: f32){
-    println!("My name is {}, I am {} years old, and my height is {} cm",name, age, height);
-}
-
-fn add(a:i32, b:i32) -> i32{
-    a+b
-}
-
-
-
-// Expressions and statements
-// Expression: Anything that returns a value(
-// 5
-// true & false
-// if conditions 
-// add(4,5) 
-//)
-
-// Statement: Anything that does not return a value
-
-
